@@ -1,0 +1,22 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - main  # Триггерится только при пуше в ветку main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Используем Ubuntu как среду выполнения
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Скачиваем код из репозитория
+
+      - name: Deploy to Render
+        run: |
+          echo "Deploying to Render..."
+          curl -X POST https://api.render.com/deploy \
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{"serviceId": "your-service-id"}'
