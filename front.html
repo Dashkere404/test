@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кнопки и API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Нажмите на кнопку</h1>
+
+  <!-- Кнопка для получения слова -->
+  <button id="wordButton">Получить слово</button>
+
+  <!-- Кнопка для получения цифры -->
+  <button id="numberButton">Получить цифру</button>
+
+  <!-- Кнопка для получения времени -->
+  <button id="time">Получить время</button>
+
+  <!-- Результат -->
+  <div id="result"></div>
+
+  <script>
+    // Функция для отправки запроса к API
+    async function fetchData(url) {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        document.getElementById('result').innerText = JSON.stringify(data);
+      } catch (error) {
+        document.getElementById('result').innerText = 'Ошибка: ' + error.message;
+      }
+    }
+
+    // Обработчики кнопок
+    document.getElementById('wordButton').addEventListener('click', () => {
+      fetchData('http://127.0.0.1:8000/get-word');
+    });
+
+    document.getElementById('numberButton').addEventListener('click', () => {
+      fetchData('http://127.0.0.1:8000/get-number');
+    });
+    document.getElementById('timeButton').addEventListener('click', () => {
+      fetchData('http://127.0.0.1:8000/time');
+    });
+  </script>
+</body>
+</html>
