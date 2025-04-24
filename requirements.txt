@@ -1,3 +1,4 @@
-fastapi==0.95.2
-uvicorn==0.23.2
-pytest
+fastapi==0.103.2
+uvicorn==0.28.0
+pytest==8.3.5
+httpx==0.24.1
