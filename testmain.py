@@ -25,6 +25,7 @@ def get_number():
 
 # Для простоты оставим корневой маршрут здесь, но в реальном проекте его лучше перенести во фронтенд
 @app.get("/", response_class=HTMLResponse)
+@app.head("/", response_class=HTMLResponse)
 def read_root():
     with open("frontend/index.html", "r") as f:
         return HTMLResponse(content=f.read(), status_code=200)
