@@ -14,8 +14,7 @@ from fastapi.responses import HTMLResponse
 
 app = FastAPI()
 
-# Подключаем папку со статическими файлами
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 @app.get("/", response_class=HTMLResponse)
 def read_root():
