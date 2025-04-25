@@ -33,10 +33,7 @@
   <button id="numberButton">Получить цифру</button>
 
   <!-- Кнопка для получения времени -->
-  <button id="time">Получить время</button>
-
-  <!-- Кнопка для получения корневого сообщения -->
-  <button id="rootButton">Получить сообщение</button>
+  <button id="timeButton">Получить время</button>
 
   <!-- Результат -->
   <div id="result"></div>
@@ -55,18 +52,15 @@
 
     // Обработчики кнопок
     document.getElementById('wordButton').addEventListener('click', () => {
-      fetchData('http://127.0.0.1:8000/get-word');
+      fetchData('/get-word');
     });
 
     document.getElementById('numberButton').addEventListener('click', () => {
-      fetchData('http://127.0.0.1:8000/get-number');
+      fetchData('/get-number');
     });
+
     document.getElementById('timeButton').addEventListener('click', () => {
-      fetchData('http://127.0.0.1:8000/time');
-    });
-    // Новый обработчик для корневого эндпоинта
-    document.getElementById('rootButton').addEventListener('click', () => {
-      fetchData('http://127.0.0.1:8000/');
+      fetchData('/time');
     });
   </script>
 </body>
