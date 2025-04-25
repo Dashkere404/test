@@ -6,8 +6,7 @@ import random
 
 app = FastAPI()
 
-# Подключаем статические файлы (если нужно)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 # API endpoints
 @app.get("/time")
