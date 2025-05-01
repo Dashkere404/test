@@ -40,7 +40,6 @@ async def rollbar_middleware(request: Request, call_next):
 @app.get("/time")
 def get_server_time():
     logger.info("Эндпоинт /time был вызван")
-    raise ValueError("Ошибка в эндпоинте /time")
     return {"server_time": datetime.now().isoformat()}
 
 @app.get("/get-word")
