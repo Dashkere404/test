@@ -14,7 +14,6 @@ app.mount("/static", StaticFiles(directory="frontend"), name="static")"""
 
 import logging
 import json
-from pythonjsonlogger import jsonlogger
 
 import logging
 import json
