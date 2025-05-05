@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  loki:
+    image: grafana/loki:latest
+    container_name: loki
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml
+    restart: always
+
+  promtail:
+    image: grafana/promtail:latest
+    container_name: promtail
+    volumes:
+      - ./promtail-config.yaml:/etc/promtail/config.yml
+      - /var/log:/var/log  # Путь к вашим глобальным логам
+    restart: always
+
+  log-server:
+    build: ./log-server
+    container_name: log-server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - loki
+    restart: always
