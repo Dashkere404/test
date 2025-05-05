@@ -19,7 +19,17 @@ import logging
 import json
 
 import os
-server_name = os.getenv("server_name", "Default Server")
+server_name = "gavno"
+
+import rollbar
+
+rollbar.init(
+    access_token='8f5f4d0522a6451c8fc5d832a798d890',
+    environment='testenv',
+    code_version='1.0'
+)
+
+rollbar.report_message('Rollbar is configured correctly', 'info')
 
 class JsonFormatter(logging.Formatter):
     def __init__(self, server_name, *args, **kwargs):
@@ -73,10 +83,6 @@ logger.addHandler(stream_handler)
 )
 logger = logging.getLogger(__name__)"""
 # Инициализация Rollbar
-rollbar.init(
-    '8f5f4d0522a6451c8fc5d832a798d890',  # Замените на ваш токен из Rollbar
-    environment='development'  # Или 'production', если вы деплоите
-)
 
 
 @app.middleware("http")
